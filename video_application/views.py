@@ -19,7 +19,7 @@ class VideoFileView(View):
         return response
 
 class HomeView(View):
-    template_name = 'index.html'
+    template_name = 'video_application/index.html'
     def get(self, request):
         most_recent_videos = Video.objects.order_by('-datetime')[:8]
         return render(request, self.template_name, {'menu_active_item': 'home', 'most_recent_videos': most_recent_videos})
@@ -30,7 +30,7 @@ class LogoutView(View):
         return HttpResponseRedirect('/')
 
 class VideoView(View):
-    template_name = 'video.html'
+    template_name = 'video_application/video.html'
 
     def get(self, request, id):
         #fetch video from DB by ID
@@ -52,7 +52,7 @@ class VideoView(View):
 
 
 class LoginView(View):
-    template_name = 'login.html'
+    template_name = 'video_application/login.html'
     
     def get(self, request):
         if request.user.is_authenticated:
@@ -79,7 +79,7 @@ class LoginView(View):
         return HttpResponse('This is Login view. POST Request.')
 
 class CommentView(View):
-    template_name = 'comment.html'
+    template_name = 'video_application/comment.html'
 
     def post(self, request):
         # pass filled out HTML-Form from View to CommentForm()
@@ -96,7 +96,7 @@ class CommentView(View):
         return HttpResponse('This is Register view. POST Request.')
 
 class RegisterView(View):
-    template_name = 'register.html'
+    template_name = 'video_application/register.html'
     
     def get(self, request):
         if request.user.is_authenticated:
@@ -123,7 +123,7 @@ class RegisterView(View):
         return HttpResponse('This is Register view. POST Request.')
 
 class NewVideo(View):
-    template_name = 'new_video.html'
+    template_name = 'video_application/new_video.html'
 
     def get(self, request):
         if request.user.is_authenticated == False:
