@@ -24,9 +24,9 @@ class Comment(models.Model):
         return self.text
 
 class User(models.Model):
-    user_name=models.TextField(max_length=100,blank=False,unique=True)
-    first_name=models.TextField(max_length=100,blank=False)
-    last_name=models.TextField(max_length=100,blank=False)
+    user_name=models.CharField(max_length=100,blank=False,unique=True)
+    first_name=models.CharField(max_length=100,blank=False)
+    last_name=models.CharField(max_length=100,blank=False)
     dob=models.DateField(default=date.today,blank=False)
     email_id=models.EmailField(max_length=70,blank=False,unique= True)
 
@@ -34,7 +34,7 @@ class User(models.Model):
         return self.user_name
 
 class Channel(models.Model):
-    channel_name=models.TextField(max_length=100,unique=True)
+    channel_name=models.CharField(max_length=100,unique=True)
     videos=models.ForeignKey(Video,on_delete=models.DO_NOTHING,)
     user_name=models.ForeignKey(User,on_delete=models.CASCADE)
 
