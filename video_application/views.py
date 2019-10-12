@@ -114,6 +114,7 @@ class RegisterView(View):
             print(form.cleaned_data['username'])
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
+            dob=form.cleaned_data['dob']
             email = form.cleaned_data['email']
             new_user = User(username=username, email=email)
             new_user.set_password(password)

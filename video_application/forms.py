@@ -1,5 +1,5 @@
 from django import forms
- 
+from datetime import date
 
 class LoginForm(forms.Form):
     username = forms.CharField(label='Username', max_length=20)
@@ -9,6 +9,9 @@ class RegisterForm(forms.Form):
     username = forms.CharField(label='Username', max_length=20)
     password = forms.CharField(label='Password', max_length=20)
     email = forms.CharField(label='Email', max_length=20)
+    first_name=forms.CharField(label='First Name',max_length=100)
+    last_name=forms.CharField(label='Last Name',max_length=100)
+    dob=forms.DateField(label='Date of Birth',widget=forms.widgets.DateInput(format="%m/%d/%Y"))
 
 class CommentForm(forms.Form):
     text = forms.CharField(label='text', max_length=300)
